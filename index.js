@@ -107,7 +107,9 @@ const server = http.createServer((req, res) => {
   } 
   
   else {
+
     // Handle 404 for unsupported routes
+    
     res.writeHead(404, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ message: 'Not Found' }));
   }
