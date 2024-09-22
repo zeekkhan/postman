@@ -5,6 +5,7 @@ const http = require('http');
 let storedData = {}; // Object to store data for PUT and DELETE operations
 
 // Create an HTTP server
+
 const server = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/') {
     // Set the response headers and status code
@@ -13,15 +14,20 @@ const server = http.createServer((req, res) => {
     // Send a JSON response
     res.end(JSON.stringify({ message: 'Success! GET request completed.' }));
   } 
+
   else if (req.method === 'POST' && req.url === '/data') {
+    
     let body = [];
 
     // Collect data chunks from the request
+    
     req.on('data', chunk => {
       body += chunk.toString(); // Convert buffer to string
     });
 
+
     // When all the data has been received
+
     req.on('end', () => {
       try {
         const parsedData = JSON.parse(body);
@@ -39,6 +45,7 @@ const server = http.createServer((req, res) => {
           res.writeHead(400, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({ message: 'Bad Request: id, name, and password are required!' }));
         }
+
       } catch (error) {
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ message: 'Invalid JSON format!', error: error.message }));
@@ -80,6 +87,7 @@ const server = http.createServer((req, res) => {
     const id = req.url.split('/')[2]; // Extract the ID from the URL
 
     if (storedData[id]) {
+
       delete storedData[id]; // Remove the record from storedData
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ message: `Record with id ${id} deleted successfully!` }));
@@ -88,6 +96,7 @@ const server = http.createServer((req, res) => {
       res.end(JSON.stringify({ message: 'Record not found for this id!' }));
     }
   } 
+  
   else {
     // Handle 404 for unsupported routes
     res.writeHead(404, { 'Content-Type': 'application/json' });
