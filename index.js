@@ -71,8 +71,11 @@ const server = http.createServer((req, res) => {
         const parsedData = JSON.parse(body);
         const { name, password } = parsedData;
 
+
         if (storedData[id]) {
+        
           // Update the existing record
+        
           storedData[id] = { name, password };
 
           res.writeHead(200, { 'Content-Type': 'application/json' });
