@@ -19,6 +19,7 @@ const server = http.createServer((req, res) => {
     
     let body = [];
 
+    
     // Collect data chunks from the request
     
     req.on('data', chunk => {
