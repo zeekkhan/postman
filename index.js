@@ -29,7 +29,7 @@ const server = http.createServer((req, res) => {
 
     // When all the data has been received
 
-    
+
     req.on('end', () => {
       try {
         const parsedData = JSON.parse(body);
@@ -58,7 +58,9 @@ const server = http.createServer((req, res) => {
     const id = req.url.split('/')[2]; // Extract the ID from the URL
     let body = '';
 
+
     // Collect data chunks from the request
+    
     req.on('data', chunk => {
       body += chunk.toString();
     });
