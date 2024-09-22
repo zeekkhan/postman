@@ -19,7 +19,7 @@ const server = http.createServer((req, res) => {
     
     let body = [];
 
-    
+
     // Collect data chunks from the request
     
     req.on('data', chunk => {
@@ -29,6 +29,7 @@ const server = http.createServer((req, res) => {
 
     // When all the data has been received
 
+    
     req.on('end', () => {
       try {
         const parsedData = JSON.parse(body);
