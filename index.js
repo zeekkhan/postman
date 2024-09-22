@@ -8,7 +8,9 @@ let storedData = {}; // Object to store data for PUT and DELETE operations
 
 const server = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/') {
+
     // Set the response headers and status code
+    
     res.writeHead(200, { 'Content-Type': 'application/json' });
 
     // Send a JSON response
