@@ -10,10 +10,11 @@ const server = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/') {
 
     // Set the response headers and status code
-    
+
     res.writeHead(200, { 'Content-Type': 'application/json' });
 
     // Send a JSON response
+    
     res.end(JSON.stringify({ message: 'Success! GET request completed.' }));
   } 
 
