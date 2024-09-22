@@ -95,7 +95,9 @@ const server = http.createServer((req, res) => {
 
     if (storedData[id]) {
 
+
       delete storedData[id]; // Remove the record from storedData
+      
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ message: `Record with id ${id} deleted successfully!` }));
     } else {
